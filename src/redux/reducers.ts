@@ -5,6 +5,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import userSlice from "./auth";
 import gameSlice from "./game";
+import waitingRoomSlice from "./waitingRoom";
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -14,6 +15,7 @@ export function createReducer() {
     const globalReducers = {
         auth: userSlice.reducer,
         game: gameSlice.reducer,
+        waitingRoom: waitingRoomSlice.reducer,
     };
     return combineReducers({
         ...globalReducers,

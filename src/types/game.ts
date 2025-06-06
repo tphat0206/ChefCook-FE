@@ -1,16 +1,26 @@
 
-export interface Position {
+export interface IPosition {
     x: number
     y: number
 }
-export interface Player {
+export interface IPlayerInWaitingRoom {
     name: string
-    cur_position: Position
-    new_position: Position
+    is_ready: boolean
 }
 
-export interface Game {
+export interface IPlayerInGame {
+    name: string
+    cur_position: IPosition
+    new_position: IPosition
+}
+
+export interface IGame {
     room: string
-    players: Player[]
+    players: IPlayerInGame[]
+}
+
+export interface IWaitingRoom {
+    room: string
+    players: IPlayerInWaitingRoom[]
 }
 

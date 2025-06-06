@@ -1,11 +1,11 @@
-import { configureStore} from '@reduxjs/toolkit'
-import { createReducer } from './reducers'
+import { configureStore } from "@reduxjs/toolkit";
+import { createReducer } from "./reducers";
 
 export function configureAppStore(preloadedState = {}) {
-  return configureStore({
-    reducer: createReducer(),
-    preloadedState,
-  })
+    return configureStore({
+        reducer: createReducer(),
+        preloadedState,
+    });
 }
 
-export const store = configureAppStore()
+export const store = configureAppStore();

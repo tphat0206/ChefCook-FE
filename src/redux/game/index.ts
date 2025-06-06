@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Game, Player } from "../../types";
+import { IGame, IPlayerInGame } from "../../types";
 
-export const initialState: Game = {
+export const initialState: IGame = {
   room: "",
   players: [],
 };
@@ -18,17 +18,17 @@ const gameSlice = createSlice({
     removeRoom: (state) => {
       state.room = "";
     },
-    addPlayer: (state, action: PayloadAction<Player>) => {
+    addPlayer: (state, action: PayloadAction<IPlayerInGame>) => {
       state.players = [...state.players, action.payload];
     },
     removePlayer: (state, action: PayloadAction<string>) => {
       state.players = state.players.filter(
-        (player: Player) => player.name != action.payload
+        (player: IPlayerInGame) => player.name != action.payload
       );
     },
-    updatePlayer: (state, action: PayloadAction<Player>) => {
-      console.log(action.payload)
-      state.players = state.players.map((player: Player) =>
+    updatePlayer: (state, action: PayloadAction<IPlayerInGame>) => {
+      console.log(action.payload);
+      state.players = state.players.map((player: IPlayerInGame) =>
         player.name == action.payload.name
           ? {
               ...player,
@@ -37,6 +37,20 @@ const gameSlice = createSlice({
             }
           : player
       );
+    },
+    roomState: (state, action: PayloadAction<string[]>) => {
+      let new_mems = action.payload.filter(
+        (player) =>
+          state.players.findIndex((cur_player) => cur_player.name == player) < 0
+      );
+      state.players = [
+        ...state.players,
+        ...new_mems.map((new_mem) => ({
+          name: new_mem,
+          cur_position: { x: 0, y: 0 },
+          new_position: { x: 0, y: 0 },
+        })),
+      ];
     },
   },
 });
