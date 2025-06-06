@@ -1,8 +1,9 @@
-import { Game } from "./game";
+import { IGame, IWaitingRoom } from "./game";
 
 export interface RootState {
     auth?: User;
-    game?: Game
+    game?: IGame
+    waitingRoom?: IWaitingRoom
 }
 
 export interface Account {
