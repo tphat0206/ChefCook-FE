@@ -4,6 +4,7 @@ const AppRoutes = {
         `/game/${room ?? ":room"}/${user ?? ":user"}`,
     WaitingRoom: (room?: string, user?: string) =>
         `/waitingRoom/${room ?? ":room"}/${user ?? ":user"}`,
+    Test: "/test",
 };
 
 export default AppRoutes;
