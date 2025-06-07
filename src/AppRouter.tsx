@@ -3,7 +3,7 @@ import HomePage from "./pages/Home";
 import GamePage from "./pages/Game";
 import AppRoutes from "./configs/Routes";
 import WaitingRoom from "./pages/WaitingRoom";
-import Experience from "./components/Experience";
+import GameTest from "./components";
 
 function AppRouter() {
   return (
@@ -11,7 +11,7 @@ function AppRouter() {
       <Route path={AppRoutes.HomePage} element={<HomePage />} />
       <Route path={AppRoutes.Game()} element={<GamePage />} />
       <Route path={AppRoutes.WaitingRoom()} element={<WaitingRoom />} />
-      <Route path={AppRoutes.Test} element={<Experience />} />
+      <Route path={AppRoutes.Test} element={<GameTest />} />
     </Routes>
   );
 }

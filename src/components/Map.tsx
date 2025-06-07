@@ -1,9 +1,9 @@
 import { useGLTF } from "@react-three/drei";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { RigidBody } from "@react-three/rapier";
 import { useEffect } from "react";
 
 export const Map = () => {
-  const map = useGLTF("models/map.glb");
+  const map = useGLTF("/models/map.glb");
   useEffect(() => {
     map.scene.traverse((child) => {
       if (child.isObject3D) {
@@ -14,13 +14,11 @@ export const Map = () => {
   });
   return (
     <>
-    <Physics>
     <RigidBody colliders="trimesh" type="fixed">
         <primitive object={map.scene} />
       </RigidBody>
-    </Physics>
     </>
   );
 };
 
-useGLTF.preload("models/map.glb");
+useGLTF.preload("/models/map.glb");
